@@ -1,0 +1,28 @@
+{
+  "name": "api-node",
+  "version": "1.0.0",
+  "description": "nuestra primera api en node",
+  "license": "ISC",
+  "author": "Gabriela",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node -r dotenv/config app.js",
+    "dev": " nodemon app.js",
+    "lint": "eslint -c eslint.config.mjs --ignore-pattern .gitignore .",
+    "style-check": "prettier --ignore-path .gitignore --check .",
+    "style-fix": "prettier --ignore-path .gitignore --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.6.2"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "morgan": "^1.10.1"
+  }
+}
