@@ -1,7 +1,6 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
+
 module.exports = (sequelize, DataTypes) => {
   class UsuarioRol extends Model {
     /**
@@ -13,12 +12,45 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  UsuarioRol.init({
-    usuarioId: DataTypes.INTEGER,
-    rolId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'UsuarioRol',
-  });
+  UsuarioRol.init(
+    {
+      id: {
+        field: "id",
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        allowNull: false,
+        autoIncrement: true,
+      },
+      usuarioId: {
+        field: "usuario_id",
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: "usuarios",
+          key: "id",
+        },
+      },
+      rolId: {
+        field: "rol_id",
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: "roles",
+          key: "id",
+        },
+      },
+    },
+    {
+      timestamps: false,
+      paranoid: false,
+      sequelize,
+      modelName: "UsuarioRol",
+      name: {
+        singular: "UsuarioRol",
+        plural: "UsuarioRoles",
+      },
+      tableName: "usuario_roles",
+    }
+  );
   return UsuarioRol;
 };
